@@ -63,22 +63,22 @@ services:
     ports:
       - 5076:5076
     restart: unless-stopped
-  plex:
-    image: lscr.io/linuxserver/plex
-    container_name: plex
-    network_mode: host
-    environment:
-      - PUID=1000
-      - PGID=1000
-      - VERSION=docker
-      - PLEX_CLAIM= #optional
-    volumes:
-      - /share/Public/SheridanFlix/Config/Plex:/config
-      - /share/Public/SheridanFlix/TV/Brian:/tv_brian
-      - /share/Public/SheridanFlix/TV/Classic:/tv_classic
-      - /share/Public/SheridanFlix/TV/Heidi:/tv_heidi
-      - /share/Public/SheridanFlix/TV/Kids:/tv_kids
-      - /share/Public/SheridanFlix/TV/Cartoons:/tv_cartoons
-      - /share/Public/SheridanFlix/Movies/Adult:/movies
-      - /share/Public/SheridanFlix/Movies/Kids:/movies_kids
-    restart: unless-stopped
+  # plex:
+  #   image: lscr.io/linuxserver/plex
+  #   container_name: plex
+  #   network_mode: host
+  #   environment:
+  #     - PUID=1000
+  #     - PGID=1000
+  #     - VERSION=docker
+  #     - PLEX_CLAIM= #optional
+  #   volumes:
+  #     - /share/Public/SheridanFlix/Config/Plex:/config
+  #     - /share/Public/SheridanFlix/TV/Brian:/tv_brian
+  #     - /share/Public/SheridanFlix/TV/Classic:/tv_classic
+  #     - /share/Public/SheridanFlix/TV/Heidi:/tv_heidi
+  #     - /share/Public/SheridanFlix/TV/Kids:/tv_kids
+  #     - /share/Public/SheridanFlix/TV/Cartoons:/tv_cartoons
+  #     - /share/Public/SheridanFlix/Movies/Adult:/movies
+  #     - /share/Public/SheridanFlix/Movies/Kids:/movies_kids
+  #   restart: unless-stopped

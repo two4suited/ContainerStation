@@ -34,7 +34,7 @@ services:
       - 6789:6789
     restart: unless-stopped
   radarr:
-    image: linuxserver/radarr
+    image: linuxserver/radarr:nightly
     container_name: radarr
     environment:
       - PUID=1000

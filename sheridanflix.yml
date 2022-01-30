@@ -1,0 +1,85 @@
+version: '3'
+
+services:
+  sonarr:
+    image: linuxserver/sonarr
+    container_name: sonarr
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/Los_Angeles
+      - UMASK_SET=022 #optional
+    volumes:
+      - /Public/SheridanFlix/Config/Sonarr:/config
+      - /Public/SheridanFlix/Downloads/tv:/download
+      - /Public/SheridanFlix/TV/Brian:/tv
+      - /Public/SheridanFlix/TV/Classic:/tv_classic
+      - /Public/SheridanFlix/TV/Heidi:/tv_heidi
+      - /Public/SheridanFlix/TV/Kids:/tv_kids
+      - /Public/SheridanFlix/TV/Cartoons:/tv_cartoons
+    ports:
+      - 8989:8989
+    restart: unless-stopped
+  nzbget:
+    image: linuxserver/nzbget
+    container_name: nzbget
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/Los_Angeles
+    volumes:
+      - /Public/SheridanFlix/Config/Nzbget:/config
+      - /Public/SheridanFlix/Downloads:/download
+    ports:
+      - 6789:6789
+    restart: unless-stopped
+  radarr:
+    image: linuxserver/radarr
+    container_name: radarr
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/Los_Angeles
+      - UMASK_SET=022 #optional
+    volumes:
+      - /Public/SheridanFlix/Config/Radarr:/config
+      - /Public/SheridanFlix/Movies/Adult:/movies
+      - /Public/SheridanFlix/Movies/Adult:/Movies
+      - /Public/SheridanFlix/Movies/Kids:/movies_kids
+      - /Public/SheridanFlix/Downloads/movies:/downloads
+    ports:
+      - 7878:7878
+    restart: unless-stopped
+  nzbhydra2:
+    image: lscr.io/linuxserver/nzbhydra2
+    container_name: nzbhydra2
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/London
+    volumes:
+      - /Public/SheridanFlix/Config/nzbhydra:/config
+      - /Public/Download:/downloads
+    ports:
+      - 5076:5076
+    restart: unless-stopped
+  plex:
+    image: lscr.io/linuxserver/plex
+    container_name: plex
+    ports:
+      - 32400:32400
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - VERSION=docker
+      - PLEX_CLAIM= #optional
+    volumes:
+      - /Public/SheridanFlix/Config/Plex:/config
+      - /Public/SheridanFlix/TV/Brian:/tv_brian
+      - /Public/SheridanFlix/TV/Classic:/tv_classic
+      - /Public/SheridanFlix/TV/Heidi:/tv_heidi
+      - /Public/SheridanFlix/TV/Kids:/tv_kids
+      - /Public/SheridanFlix/TV/Cartoons:/tv_cartoons
+      - /Public/SheridanFlix/Movies/Adult:/movies
+      - /Public/SheridanFlix/Movies/Kids:/movies_kids
+    restart: unless-stopped

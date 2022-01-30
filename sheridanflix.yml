@@ -10,13 +10,13 @@ services:
       - TZ=America/Los_Angeles
       - UMASK_SET=022 #optional
     volumes:
-      - /Public/SheridanFlix/Config/Sonarr:/config
-      - /Public/SheridanFlix/Downloads/tv:/download
-      - /Public/SheridanFlix/TV/Brian:/tv
-      - /Public/SheridanFlix/TV/Classic:/tv_classic
-      - /Public/SheridanFlix/TV/Heidi:/tv_heidi
-      - /Public/SheridanFlix/TV/Kids:/tv_kids
-      - /Public/SheridanFlix/TV/Cartoons:/tv_cartoons
+      - /share/Public/SheridanFlix/Config/Sonarr:/config
+      - /share/Public/SheridanFlix/Downloads/tv:/download
+      - /share/Public/SheridanFlix/TV/Brian:/tv
+      - /share/Public/SheridanFlix/TV/Classic:/tv_classic
+      - /share/Public/SheridanFlix/TV/Heidi:/tv_heidi
+      - /share/Public/SheridanFlix/TV/Kids:/tv_kids
+      - /share/Public/SheridanFlix/TV/Cartoons:/tv_cartoons
     ports:
       - 8989:8989
     restart: unless-stopped
@@ -28,8 +28,8 @@ services:
       - PGID=1000
       - TZ=America/Los_Angeles
     volumes:
-      - /Public/SheridanFlix/Config/Nzbget:/config
-      - /Public/SheridanFlix/Downloads:/download
+      - /share/Public/SheridanFlix/Config/Nzbget:/config
+      - /share/Public/SheridanFlix/Downloads:/download
     ports:
       - 6789:6789
     restart: unless-stopped
@@ -42,11 +42,11 @@ services:
       - TZ=America/Los_Angeles
       - UMASK_SET=022 #optional
     volumes:
-      - /Public/SheridanFlix/Config/Radarr:/config
-      - /Public/SheridanFlix/Movies/Adult:/movies
-      - /Public/SheridanFlix/Movies/Adult:/Movies
-      - /Public/SheridanFlix/Movies/Kids:/movies_kids
-      - /Public/SheridanFlix/Downloads/movies:/downloads
+      - /share/Public/SheridanFlix/Config/Radarr:/config
+      - /share/Public/SheridanFlix/Movies/Adult:/movies
+      - /share/Public/SheridanFlix/Movies/Adult:/Movies
+      - /share/Public/SheridanFlix/Movies/Kids:/movies_kids
+      - /share/Public/SheridanFlix/Downloads/movies:/downloads
     ports:
       - 7878:7878
     restart: unless-stopped
@@ -58,8 +58,8 @@ services:
       - PGID=1000
       - TZ=Europe/London
     volumes:
-      - /Public/SheridanFlix/Config/nzbhydra:/config
-      - /Public/Download:/downloads
+      - /share/Public/SheridanFlix/Config/nzbhydra:/config
+      - /share/Public/Download:/downloads
     ports:
       - 5076:5076
     restart: unless-stopped
@@ -74,12 +74,12 @@ services:
       - VERSION=docker
       - PLEX_CLAIM= #optional
     volumes:
-      - /Public/SheridanFlix/Config/Plex:/config
-      - /Public/SheridanFlix/TV/Brian:/tv_brian
-      - /Public/SheridanFlix/TV/Classic:/tv_classic
-      - /Public/SheridanFlix/TV/Heidi:/tv_heidi
-      - /Public/SheridanFlix/TV/Kids:/tv_kids
-      - /Public/SheridanFlix/TV/Cartoons:/tv_cartoons
-      - /Public/SheridanFlix/Movies/Adult:/movies
-      - /Public/SheridanFlix/Movies/Kids:/movies_kids
+      - /share/Public/SheridanFlix/Config/Plex:/config
+      - /share/Public/SheridanFlix/TV/Brian:/tv_brian
+      - /share/Public/SheridanFlix/TV/Classic:/tv_classic
+      - /share/Public/SheridanFlix/TV/Heidi:/tv_heidi
+      - /share/Public/SheridanFlix/TV/Kids:/tv_kids
+      - /share/Public/SheridanFlix/TV/Cartoons:/tv_cartoons
+      - /share/Public/SheridanFlix/Movies/Adult:/movies
+      - /share/Public/SheridanFlix/Movies/Kids:/movies_kids
     restart: unless-stopped

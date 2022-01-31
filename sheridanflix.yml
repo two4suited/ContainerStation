@@ -43,8 +43,8 @@ services:
       - UMASK_SET=022 #optional
     volumes:
       - /share/Public/SheridanFlix/Config/Radarr:/config
-      - /share/Public/SheridanFlix/Movies/Adult:/movies
-      - /share/Public/SheridanFlix/Movies/Adult:/Movies
+      - /share/Public/SheridanFlix/Movies/Adults:/movies
+      - /share/Public/SheridanFlix/Movies/Adults:/Movies
       - /share/Public/SheridanFlix/Movies/Kids:/movies_kids
       - /share/Public/SheridanFlix/Downloads/movies:/downloads
       - /share/Public/SheridanFlix/Downloads:/download
@@ -80,6 +80,6 @@ services:
   #     - /share/Public/SheridanFlix/TV/Heidi:/tv_heidi
   #     - /share/Public/SheridanFlix/TV/Kids:/tv_kids
   #     - /share/Public/SheridanFlix/TV/Cartoons:/tv_cartoons
-  #     - /share/Public/SheridanFlix/Movies/Adult:/movies
+  #     - /share/Public/SheridanFlix/Movies/Adults:/movies
   #     - /share/Public/SheridanFlix/Movies/Kids:/movies_kids
   #   restart: unless-stopped

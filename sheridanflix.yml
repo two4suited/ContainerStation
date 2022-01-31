@@ -11,7 +11,7 @@ services:
       - UMASK_SET=022 #optional
     volumes:
       - /share/Public/SheridanFlix/Config/Sonarr:/config
-      - /share/Public/SheridanFlix/Downloads/tv:/download
+      - /share/Public/SheridanFlix/Downloads:/download
       - /share/Public/SheridanFlix/TV/Brian:/tv
       - /share/Public/SheridanFlix/TV/Classic:/tv_classic
       - /share/Public/SheridanFlix/TV/Heidi:/tv_heidi

@@ -17,6 +17,7 @@ services:
       - /share/Public/SheridanFlix/TV/Heidi:/tv_heidi
       - /share/Public/SheridanFlix/TV/Kids:/tv_kids
       - /share/Public/SheridanFlix/TV/Cartoons:/tv_cartoons
+      - /share/Public/SheridanFlix/TV/Shows:/shows
     ports:
       - 8989:8989
     restart: unless-stopped

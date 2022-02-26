@@ -10,8 +10,8 @@ services:
       - TZ=America/Los_Angeles
       - UMASK_SET=022 #optional
     volumes:
-      - /share/Public/SheridanFlix/Config/Sonarr:/config
-      - /share/Public/SheridanFlix/Downloads:/download
+      - /share/SheridanFlix/Config/Sonarr:/config
+      - /share/SheridanFlix/Downloads:/download
       - /share/Public/SheridanFlix/TV/Brian:/tv
       - /share/Public/SheridanFlix/TV/Classic:/tv_classic
       - /share/Public/SheridanFlix/TV/Heidi:/tv_heidi
@@ -29,7 +29,7 @@ services:
       - PGID=1000
       - TZ=America/Los_Angeles
     volumes:
-      - /share/Public/SheridanFlix/Config/Nzbget:/config
+      - /share/SheridanFlix/Config/Nzbget:/config
       - /share/SheridanFlix/Downloads:/download
     ports:
       - 6789:6789
@@ -43,12 +43,12 @@ services:
       - TZ=America/Los_Angeles
       - UMASK_SET=022 #optional
     volumes:
-      - /share/Public/SheridanFlix/Config/Radarr:/config
+      - /share/SheridanFlix/Config/Radarr:/config
       - /share/Public/SheridanFlix/Movies/Adults:/movies
       - /share/Public/SheridanFlix/Movies/Adults:/Movies
       - /share/Public/SheridanFlix/Movies/Kids:/movies_kids
-      - /share/Public/SheridanFlix/Downloads/movies:/downloads
-      - /share/Public/SheridanFlix/Downloads:/download
+      - /share/SheridanFlix/Downloads/movies:/downloads
+      - /share/SheridanFlix/Downloads:/download
     ports:
       - 7878:7878
     restart: unless-stopped
@@ -60,8 +60,8 @@ services:
       - PGID=1000
       - TZ=Europe/London
     volumes:
-      - /share/Public/SheridanFlix/Config/nzbhydra:/config
-      - /share/Public/Download:/downloads
+      - /share/SheridanFlix/Config/nzbhydra:/config
+      - /share/SheridanFlix/Downloads:/downloads
     ports:
       - 5076:5076
     restart: unless-stopped

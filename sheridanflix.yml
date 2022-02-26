@@ -30,7 +30,7 @@ services:
       - TZ=America/Los_Angeles
     volumes:
       - /share/Public/SheridanFlix/Config/Nzbget:/config
-      - /share/Public/SheridanFlix/Downloads:/download
+      - /share/SheridanFlix/Downloads:/download
     ports:
       - 6789:6789
     restart: unless-stopped

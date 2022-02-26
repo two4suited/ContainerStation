@@ -12,12 +12,12 @@ services:
     volumes:
       - /share/SheridanFlix/Config/Sonarr:/config
       - /share/SheridanFlix/Downloads:/download
-      - /share/Public/SheridanFlix/TV/Brian:/tv
-      - /share/Public/SheridanFlix/TV/Classic:/tv_classic
-      - /share/Public/SheridanFlix/TV/Heidi:/tv_heidi
-      - /share/Public/SheridanFlix/TV/Kids:/tv_kids
-      - /share/Public/SheridanFlix/TV/Cartoons:/tv_cartoons
-      - /share/Public/SheridanFlix/TV/Shows:/shows
+      - /share/SheridanFlix/TV/Brian:/tv
+      - /share/SheridanFlix/TV/Classic:/tv_classic
+      - /share/SheridanFlix/TV/Heidi:/tv_heidi
+      - /share/SheridanFlix/TV/Kids:/tv_kids
+      - /share/SheridanFlix/TV/Cartoons:/tv_cartoons
+      - /share/SheridanFlix/TV/Shows:/shows
     ports:
       - 8989:8989
     restart: unless-stopped
@@ -44,9 +44,9 @@ services:
       - UMASK_SET=022 #optional
     volumes:
       - /share/SheridanFlix/Config/Radarr:/config
-      - /share/Public/SheridanFlix/Movies/Adults:/movies
-      - /share/Public/SheridanFlix/Movies/Adults:/Movies
-      - /share/Public/SheridanFlix/Movies/Kids:/movies_kids
+      - /share/SheridanFlix/Movies/Adults:/movies
+      - /share/SheridanFlix/Movies/Adults:/Movies
+      - /share/SheridanFlix/Movies/Kids:/movies_kids
       - /share/SheridanFlix/Downloads/movies:/downloads
       - /share/SheridanFlix/Downloads:/download
     ports:

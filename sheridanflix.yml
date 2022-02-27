@@ -13,11 +13,8 @@ services:
       - /share/SheridanFlix/Config/Sonarr:/config
       - /share/SheridanFlix/Downloads:/download
       - /share/SheridanFlix/TV/Brian:/tv
-      - /share/SheridanFlix/TV/Classic:/tv_classic
       - /share/SheridanFlix/TV/Heidi:/tv_heidi
       - /share/SheridanFlix/TV/Kids:/tv_kids
-      - /share/SheridanFlix/TV/Cartoons:/tv_cartoons
-      - /share/SheridanFlix/TV/Shows:/shows
     ports:
       - 8989:8989
     restart: unless-stopped

@@ -12,8 +12,7 @@ services:
     volumes:
       - /share/SheridanFlix/Config/Sonarr:/config
       - /share/SheridanFlix/Downloads:/download
-      - /share/SheridanFlix/TV/Brian:/tv
-      - /share/SheridanFlix/TV/Heidi:/tv_heidi
+      - /share/SheridanFlix/TV/Adults:/tv
       - /share/SheridanFlix/TV/Kids:/tv_kids
     ports:
       - 8989:8989

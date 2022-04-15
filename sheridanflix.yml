@@ -54,13 +54,25 @@ services:
     environment:
       - PUID=1000
       - PGID=1000
-      - TZ=Europe/London
+      - TZ=merica/Los_Angeles
     volumes:
       - /share/SheridanFlix/Config/nzbhydra:/config
       - /share/SheridanFlix/Downloads:/downloads
     ports:
       - 5076:5076
     restart: unless-stopped
+  tautulli:
+    image: ghcr.io/tautulli/tautulli
+    container_name: tautulli
+    restart: unless-stopped
+    volumes:
+      - <path to data>:/config
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/Los_Angeles
+    ports:
+      - 8181:8181
   # plex:
   #   image: lscr.io/linuxserver/plex
   #   container_name: plex

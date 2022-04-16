@@ -88,4 +88,6 @@ services:
       - /share/SheridanFlix/Movies/Kids:/movies_kids
       - /share/SheridanFlix/TV/Adults:/tv
       - /share/SheridanFlix/TV/Kids:/tv_kids
+    ports:
+      - 32400:32400
     restart: unless-stopped

@@ -73,21 +73,4 @@ services:
       - TZ=America/Los_Angeles
     ports:
       - 8181:8181
-  plex:
-    image: lscr.io/linuxserver/plex
-    container_name: plex
-    network_mode: host
-    environment:
-      - PUID=1000
-      - PGID=1000
-      - VERSION=docker
-      - PLEX_CLAIM= #optional
-    volumes:
-      - /share/SheridanFlix/Config/Plex:/config
-      - /share/SheridanFlix/Movies/Adults:/movies
-      - /share/SheridanFlix/Movies/Kids:/movies_kids
-      - /share/SheridanFlix/TV/Adults:/tv
-      - /share/SheridanFlix/TV/Kids:/tv_kids
-    ports:
-      - 32400:32400
-    restart: unless-stopped
+

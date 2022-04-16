@@ -83,7 +83,7 @@ services:
        - VERSION=docker
        - PLEX_CLAIM= #optional
      volumes:
-       - /share/Public/SheridanFlix/Config/Plex:/config
+       - /share/SheridanFlix/Config/Plex:/config
        - /share/SheridanFlix/Movies/Adults:/movies
        - /share/SheridanFlix/Movies/Kids:/movies_kids
        - /share/SheridanFlix/TV/Adults:/tv

@@ -61,6 +61,8 @@ services:
     ports:
       - 5076:5076
     restart: unless-stopped
+    security_opt:
+      - seccomp=unconfined
   tautulli:
     image: ghcr.io/tautulli/tautulli
     container_name: tautulli

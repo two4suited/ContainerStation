@@ -86,4 +86,13 @@ services:
     volumes:
       - /share/SheridanFlix/Config/overseerr:/app/config
     restart: unless-stopped
+  plexmetamanager:
+    image: meisnate12/plex-meta-manager
+    container_name: plexmetamanager
+    environment:
+      - LOG_LEVEL=debug
+      - TZ=America/Los_Angeles   
+    volumes:
+      - /share/SheridanFlix/Config/plexmetamnager: /config
+    restart: unless-stopped
 

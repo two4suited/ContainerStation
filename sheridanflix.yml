@@ -86,13 +86,19 @@ services:
     volumes:
       - /share/SheridanFlix/Config/overseerr:/app/config
     restart: unless-stopped
-  plexmetamanager:
-    image: meisnate12/plex-meta-manager
-    container_name: plexmetamanager
+  plex-meta-manager:
+    image: lscr.io/linuxserver/plex-meta-manager:latest
+    container_name: plex-meta-manager
     environment:
-      - LOG_LEVEL=debug
-      - TZ=America/Los_Angeles   
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/Los_Angeles
+      - PMM_CONFIG=/config/config.yml #optional
+      - PMM_TIME=03:00 #optional
+      - PMM_RUN=True #optional
+      - PMM_TEST=False #optional
+      - PMM_NO_MISSING=False #optional
     volumes:
-      - /share/SheridanFlix/Config/plexmetamnager: /config
+      -  /share/SheridanFlix/Config/plexmetamanager:/config
     restart: unless-stopped
 

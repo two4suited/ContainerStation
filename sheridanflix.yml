@@ -94,8 +94,8 @@ services:
       - PGID=1000
       - TZ=America/Los_Angeles
       - PMM_CONFIG=/config/config.yml #optional
-      - PMM_TIME=03:00 #optional
-      - PMM_RUN=false #optional
+      - PMM_TIME=02:00,03:00 #optional
+      - PMM_RUN=true #optional
       - PMM_TEST=False #optional
       - PMM_NO_MISSING=False #optional
     volumes:

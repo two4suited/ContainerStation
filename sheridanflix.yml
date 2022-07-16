@@ -95,7 +95,7 @@ services:
       - TZ=America/Los_Angeles
       - PMM_CONFIG=/config/config.yml #optional
       - PMM_TIME=03:00 #optional
-      - PMM_RUN=True #optional
+      - PMM_RUN=false #optional
       - PMM_TEST=False #optional
       - PMM_NO_MISSING=False #optional
     volumes:

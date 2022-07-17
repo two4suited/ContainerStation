@@ -101,4 +101,15 @@ services:
     volumes:
       -  /share/SheridanFlix/Config/plexmetamanager:/config
     restart: unless-stopped
+  plex-cleaner:
+    image: nitrikx/plex-cleaner
+    container_name: plex-cleaner
+    environment:
+      # Execute the script every 5 minutes
+      - EXECUTION_CRON_EXPRESSION=*/5 * * * *
+    volumes:
+      -  /share/SheridanFlix/Config/plexcleaner/config:/config
+      -  /share/SheridanFlix/Config/plexmetamanager/logs:/logs
+      # - ./plexdata:/plexdata
+      # - ./logs:/logs
 

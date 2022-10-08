@@ -48,6 +48,20 @@ services:
     ports:
       - 7878:7878
     restart: unless-stopped
+  sabnzbd:
+    image: lscr.io/linuxserver/sabnzbd:latest
+    container_name: sabnzbd
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/London
+    volumes:
+      - /share/SheridanFlix/Config/sabnzbd:/config
+      - /share/SheridanFlix/Downloads:/downloads #optional
+      - /share/SheridanFlix/Downloads/incomplete:/incomplete-downloads #optional
+    ports:
+      - 8080:8080
+    restart: unless-stopped
   nzbhydra2:
     image: lscr.io/linuxserver/nzbhydra2
     container_name: nzbhydra2

@@ -44,7 +44,7 @@ services:
       - /share/SheridanFlix/Movies/Adults:/movies
       - /share/SheridanFlix/Movies/Adults:/Movies
       - /share/SheridanFlix/Movies/Kids:/movies_kids
-      - /share/SheridanFlix/Downloads/movies:/downloads
+      - /share/SheridanFlix/Downloads:/downloads
       - /share/SheridanFlix/Downloads:/download
     ports:
       - 7878:7878

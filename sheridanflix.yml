@@ -60,7 +60,7 @@ services:
       - /share/SheridanFlix/Downloads:/downloads #optional
       - /share/SheridanFlix/Downloads/incomplete:/incomplete-downloads #optional
     ports:
-      - 8080:8080
+      - 7890:8080
     restart: unless-stopped
   nzbhydra2:
     image: lscr.io/linuxserver/nzbhydra2

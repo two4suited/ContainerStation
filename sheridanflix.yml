@@ -12,6 +12,7 @@ services:
     volumes:
       - /share/SheridanFlix/Config/Sonarr:/config
       - /share/SheridanFlix/Downloads:/download
+      - /share/SheridanFlix/Downloads:/downloads
       - /share/SheridanFlix/TV/Adults:/tv
       - /share/SheridanFlix/TV/Kids:/tv_kids
     ports:

@@ -41,6 +41,8 @@ services:
       - UMASK_SET=002 #optional
     volumes:
       - /share/SheridanFlix/Config/readarr:/config
+      - /share/SheridanFlix/Downloads:/download
+      - /share/SheridanFlix/Books:/books
     ports:
       - 8787:8787
     restart: unless-stopped

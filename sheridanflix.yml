@@ -132,4 +132,17 @@ services:
     volumes:
       -  /share/SheridanFlix/Config/plexmetamanager:/config
     restart: unless-stopped
+  plextraktsync:
+    image: ghcr.io/taxel/plextraktsync
+    command: sync
+    container_name: plextraktsync
+    restart: on-failure:2
+    volumes:
+      - /share/SheridanFlix/Config/plexsync:/app/config
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/Los_Angeles
+
+
   

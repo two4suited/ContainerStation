@@ -18,35 +18,35 @@ services:
     ports:
       - 8989:8989
     restart: unless-stopped
-  nzbget:
-    image: linuxserver/nzbget
-    container_name: nzbget
-    environment:
-      - PUID=1000
-      - PGID=1000
-      - TZ=America/Los_Angeles
-    volumes:
-      - /share/SheridanFlix/Config/Nzbget:/config
-      - /share/SheridanFlix/Downloads:/download
-    ports:
-      - 6789:6789
-    restart: unless-stopped
-  readarr:
-    image: cr.hotio.dev/hotio/readarr
-    container_name: readarr
-    environment:
-      - PUID=1000
-      - PGID=1000
-      - TZ=America/Los_Angeles
-      - UMASK_SET=002 #optional
-    volumes:
-      - /share/SheridanFlix/Config/readarr:/config
-      - /share/SheridanFlix/Downloads:/download
-      - /share/SheridanFlix/Downloads:/downloads
-      - /share/SheridanFlix/Books:/books
-    ports:
-      - 8787:8787
-    restart: unless-stopped
+  #nzbget:
+  #  image: linuxserver/nzbget
+  #  container_name: nzbget
+  #  environment:
+  #    - PUID=1000
+  #    - PGID=1000
+  #    - TZ=America/Los_Angeles
+   # volumes:
+   #   - /share/SheridanFlix/Config/Nzbget:/config
+   #   - /share/SheridanFlix/Downloads:/download
+   # ports:
+   #   - 6789:6789
+   # restart: unless-stopped
+  #readarr:
+  #  image: cr.hotio.dev/hotio/readarr
+  #  container_name: readarr
+   # environment:
+    #  - PUID=1000
+    #  - PGID=1000
+    #  - TZ=America/Los_Angeles
+    #  - UMASK_SET=002 #optional
+    #volumes:
+    #  - /share/SheridanFlix/Config/readarr:/config
+    #  - /share/SheridanFlix/Downloads:/download
+    #  - /share/SheridanFlix/Downloads:/downloads
+    #  - /share/SheridanFlix/Books:/books
+   # ports:
+   #   - 8787:8787
+   # restart: unless-stopped
   radarr:
     image: linuxserver/radarr:latest
     container_name: radarr

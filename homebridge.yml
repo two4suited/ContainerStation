@@ -16,7 +16,7 @@ services:
       - HOMEBRIDGE_CONFIG_UI_PORT=8581
       - UMASK_SET=022 #optional
     volumes:
-      - /Container/homebridge:/homebridge
+      - /share/Container/homebridge:/homebridge
     logging:
       driver: json-file
       options:

@@ -4,6 +4,8 @@ services:
     image: homebridge/homebridge:latest
     restart: always
     network_mode: host
+    ports:
+      - 8581:8581
     volumes:
       - ./volumes/homebridge:/homebridge
     logging:

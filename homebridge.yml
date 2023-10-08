@@ -13,7 +13,7 @@ services:
       - TZ=America/Los_Angeles
       - UMASK_SET=022 #optional
     volumes:
-      - ./volumes/homebridge:/homebridge
+      - /Container/homebridge:/homebridge
     logging:
       driver: json-file
       options:

@@ -2,10 +2,16 @@ version: '2'
 services:
   homebridge:
     image: homebridge/homebridge:latest
+    containername: homebridge
     restart: always
     network_mode: host
     ports:
       - 8581:8581
+     environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/Los_Angeles
+      - UMASK_SET=022 #optional
     volumes:
       - ./volumes/homebridge:/homebridge
     logging:

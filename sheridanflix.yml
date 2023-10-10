@@ -80,7 +80,7 @@ services:
     environment:
       - PUID=1000
       - PGID=1000
-      - TZ=Europe/London
+      - TZ=merica/Los_Angeles
     volumes:
       - /share/SheridanFlix/Config/sabnzbd:/config
       - /share/SheridanFlix/Downloads:/downloads #optional
@@ -120,7 +120,9 @@ services:
     container_name: overseerr
     environment:
       - LOG_LEVEL=debug
-      - TZ=America/Los_Angeles
+      - PUID=1000
+      - PGID=1000
+      - TZ=merica/Los_Angeles
     ports:
       - 5055:5055
     volumes:

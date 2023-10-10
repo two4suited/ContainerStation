@@ -1,6 +1,15 @@
 version: '3'
 
 services:
+  homarr:
+    container_name: homarr
+    image: ghcr.io/ajnart/homarr:latest
+    restart: unless-stopped
+    volumes:
+      - /share/Container/homarr/configs:/app/data/configs
+      - /share/Container/homarr:/app/public/icons
+    ports:
+      - '7575:7575'
   sonarr:
     image: linuxserver/sonarr
     container_name: sonarr

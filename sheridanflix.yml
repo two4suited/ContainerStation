@@ -126,7 +126,7 @@ services:
     ports:
       - 5055:5055
     volumes:
-      - /share/SheridanFlix/Config/overseerr:/config
+      - /share/SheridanFlix/Config/overseerr:/app/config
     restart: unless-stopped
   plex-meta-manager:
     image: lscr.io/linuxserver/plex-meta-manager:latest

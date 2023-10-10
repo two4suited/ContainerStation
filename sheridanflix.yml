@@ -116,7 +116,7 @@ services:
     ports:
       - 8181:8181
   overseerr:
-    image: linuxserver/overseerr:latest
+    image: sctx/overseerr
     container_name: overseerr
     environment:
       - LOG_LEVEL=debug

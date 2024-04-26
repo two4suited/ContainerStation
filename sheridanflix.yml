@@ -1,15 +1,5 @@
 version: '3'
-
 services:
-  homarr:
-    container_name: homarr
-    image: ghcr.io/ajnart/homarr:latest
-    restart: unless-stopped
-    volumes:
-      - /share/Container/homarr/configs:/app/data/configs
-      - /share/Container/homarr:/app/public/icons
-    ports:
-      - '7575:7575'
   sonarr:
     image: linuxserver/sonarr
     container_name: sonarr
@@ -27,35 +17,43 @@ services:
     ports:
       - 8989:8989
     restart: unless-stopped
-  #nzbget:
-  #  image: linuxserver/nzbget
-  #  container_name: nzbget
-  #  environment:
-  #    - PUID=1000
-  #    - PGID=1000
-  #    - TZ=America/Los_Angeles
-   # volumes:
-   #   - /share/SheridanFlix/Config/Nzbget:/config
-   #   - /share/SheridanFlix/Downloads:/download
-   # ports:
-   #   - 6789:6789
-   # restart: unless-stopped
-  #readarr:
-  #  image: cr.hotio.dev/hotio/readarr
-  #  container_name: readarr
-   # environment:
-    #  - PUID=1000
-    #  - PGID=1000
-    #  - TZ=America/Los_Angeles
-    #  - UMASK_SET=002 #optional
-    #volumes:
-    #  - /share/SheridanFlix/Config/readarr:/config
-    #  - /share/SheridanFlix/Downloads:/download
-    #  - /share/SheridanFlix/Downloads:/downloads
-    #  - /share/SheridanFlix/Books:/books
-   # ports:
-   #   - 8787:8787
-   # restart: unless-stopped
+  sabnzbd:
+    image: lscr.io/linuxserver/sabnzbd:latest
+    container_name: sabnzbd
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=merica/Los_Angeles
+    volumes:
+      - /share/SheridanFlix/Config/sabnzbd:/config
+      - /share/SheridanFlix/Downloads:/downloads #optional
+      - /share/SheridanFlix/Downloads/incomplete:/incomplete-downloads #optional
+    ports:
+      - 7890:8080
+    restart: unless-stopped
+  overseerr:
+    image: sctx/overseerr
+    container_name: overseerr
+    environment:
+      - LOG_LEVEL=debug
+      - PUID=1000
+      - PGID=1000
+      - TZ=merica/Los_Angeles
+    ports:
+      - 5055:5055
+    volumes:
+      - /share/SheridanFlix/Config/overseerr:/app/config
+    restart: unless-stopped
+  homarr:
+    container_name: homarr
+    image: ghcr.io/ajnart/homarr:latest
+    restart: unless-stopped
+    volumes:
+      - /share/Container/homarr/configs:/app/data/configs
+      - /share/Container/homarr:/data
+      - /share/Container/homarr:/app/public/icons
+    ports:
+      - '7575:7575'
   radarr:
     image: linuxserver/radarr:latest
     container_name: radarr
@@ -74,35 +72,6 @@ services:
     ports:
       - 7878:7878
     restart: unless-stopped
-  sabnzbd:
-    image: lscr.io/linuxserver/sabnzbd:latest
-    container_name: sabnzbd
-    environment:
-      - PUID=1000
-      - PGID=1000
-      - TZ=merica/Los_Angeles
-    volumes:
-      - /share/SheridanFlix/Config/sabnzbd:/config
-      - /share/SheridanFlix/Downloads:/downloads #optional
-      - /share/SheridanFlix/Downloads/incomplete:/incomplete-downloads #optional
-    ports:
-      - 7890:8080
-    restart: unless-stopped
-  nzbhydra2:
-    image: lscr.io/linuxserver/nzbhydra2
-    container_name: nzbhydra2
-    environment:
-      - PUID=1000
-      - PGID=1000
-      - TZ=merica/Los_Angeles
-    volumes:
-      - /share/SheridanFlix/Config/nzbhydra:/config
-      - /share/SheridanFlix/Downloads:/downloads
-    ports:
-      - 5076:5076
-    restart: unless-stopped
-    security_opt:
-      - seccomp=unconfined
   tautulli:
     image: ghcr.io/tautulli/tautulli
     container_name: tautulli
@@ -115,56 +84,47 @@ services:
       - TZ=America/Los_Angeles
     ports:
       - 8181:8181
-  overseerr:
-    image: sctx/overseerr
-    container_name: overseerr
+  plex:
+    image: plexinc/pms-docker
+    container_name: plex
+    network_mode: host
     environment:
-      - LOG_LEVEL=debug
       - PUID=1000
       - PGID=1000
-      - TZ=merica/Los_Angeles
+      - TZ=america/los_angeles
+      - VERSION=docker
+    volumes:
+      - /share/SheridanFlix/Config/Plex:/config
+      - /share/SheridanFlix/Movies/Adults:/movies
+      - /share/SheridanFlix/Movies/Kids:/movies_kids
+      - /share/SheridanFlix/TV/Adults:/tv
+      - /share/SheridanFlix/TV/Kids:/tv_kids
+      - /share/SheridanFlix/Music:/music
     ports:
-      - 5055:5055
-    volumes:
-      - /share/SheridanFlix/Config/overseerr:/app/config
-    restart: unless-stopped
-  plex-meta-manager:
-    image: lscr.io/linuxserver/plex-meta-manager:latest
-    container_name: plex-meta-manager
+      - 32400:32400
+  lidarr:
+    image: lscr.io/linuxserver/lidarr:latest
+    container_name: lidarr
     environment:
       - PUID=1000
       - PGID=1000
       - TZ=America/Los_Angeles
-      - PMM_CONFIG=/config/config.yml #optional
-      - PMM_TIME=02:00,03:00 #optional
-      - PMM_RUN=true #optional
-      - PMM_TEST=False #optional
-      - PMM_NO_MISSING=False #optional
     volumes:
-      -  /share/SheridanFlix/Config/plexmetamanager:/config
+      - /share/SheridanFlix/Config/Lidarr:/config
+      - /share/SheridanFlix/Music:/music #optional
+      - /share/SheridanFlix/Downloads:/downloads #optional
+    ports:
+      - 8686:8686
     restart: unless-stopped
-  scheduler:
-    image: mcuadros/ofelia:latest
-    container_name: scheduler
-    depends_on:
-      - plextraktsync
-    command: daemon --docker
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock:ro
-    labels:
-      ofelia.job-run.plextraktsync.schedule: "@every 1h"
-      ofelia.job-run.plextraktsync.container: "plextraktsync"  
-  plextraktsync:
-    image: ghcr.io/taxel/plextraktsync
-    command: sync
-    container_name: plextraktsync
-    restart: on-failure:2
-    volumes:
-      - /share/SheridanFlix/Config/plexsync:/app/config
+  prowlarr:
+    image: lscr.io/linuxserver/prowlarr:latest
+    container_name: prowlarr
     environment:
       - PUID=1000
       - PGID=1000
-      - TZ=America/Los_Angeles
-
-
-  
+      - TZ=Etc/UTC
+    volumes:
+      - /share/SheridanFlix/prowlarr/data:/config
+    ports:
+      - 9696:9696
+    restart: unless-stopped
